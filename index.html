@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gustavo Encalada — Project Manager | Operations Manager | Technical Office Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#0A0C10;
+    --bg2:#0F1218;
+    --bg3:#141820;
+    --surface:#181D26;
+    --surface2:#1E2430;
+    --teal:#1DB8A4;
+    --teal-dim:#0E6B60;
+    --teal-glow:rgba(29,184,164,0.08);
+    --gold:#D4A84B;
+    --gold-dim:#8A6B2A;
+    --white:#FFFFFF;
+    --gray100:#E8EAF0;
+    --gray300:#8892A0;
+    --gray400:#606878;
+    --gray500:#404858;
+    --gray600:#2A3040;
+    --sidebar-w:280px;
+    --border:rgba(255,255,255,0.06);
+    --border2:rgba(255,255,255,0.10);
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--gray100);display:flex;min-height:100vh;}
+
+  /* SIDEBAR */
+  .sidebar{
+    width:var(--sidebar-w);min-height:100vh;
+    background:var(--bg2);
+    position:fixed;top:0;left:0;
+    display:flex;flex-direction:column;
+    z-index:100;overflow-y:auto;
+    border-right:1px solid var(--border);
+  }
+  .sidebar-top{
+    padding:40px 28px 32px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+  }
+  .avatar{
+    width:90px;height:90px;border-radius:50%;
+    background:linear-gradient(135deg,var(--teal-dim),var(--bg3));
+    margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;
+    font-size:30px;color:var(--teal);font-weight:600;
+    border:2px solid var(--teal-dim);
+    overflow:hidden;
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;}
+  .sidebar-name{
+    font-family:'Playfair Display',serif;
+    font-size:17px;font-weight:600;
+    color:var(--white);margin-bottom:4px;line-height:1.3;
+  }
+  .sidebar-titles{display:flex;flex-direction:column;gap:5px;margin-top:12px;}
+  .title-badge{
+    background:rgba(29,184,164,0.1);
+    border:1px solid rgba(29,184,164,0.25);
+    color:var(--teal);
+    font-size:10px;font-weight:500;
+    letter-spacing:0.08em;text-transform:uppercase;
+    padding:4px 10px;border-radius:20px;text-align:center;
+  }
+  .sidebar-nav{padding:20px 0;flex:1;}
+  .nav-section-label{
+    font-size:9px;font-weight:500;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--gray400);
+    padding:0 28px 8px;margin-top:12px;
+  }
+  .nav-link{
+    display:flex;align-items:center;gap:12px;
+    padding:10px 28px;
+    color:var(--gray300);text-decoration:none;
+    font-size:13px;font-weight:400;
+    transition:all 0.2s;
+    border-left:2px solid transparent;
+  }
+  .nav-link:hover,.nav-link.active{
+    color:var(--white);
+    background:var(--teal-glow);
+    border-left-color:var(--teal);
+  }
+  .nav-dot{width:5px;height:5px;border-radius:50%;background:var(--gray400);flex-shrink:0;transition:background 0.2s;}
+  .nav-link:hover .nav-dot,.nav-link.active .nav-dot{background:var(--teal);}
+  .sidebar-contact{
+    padding:20px 28px;
+    border-top:1px solid var(--border);
+  }
+  .contact-item{
+    display:flex;align-items:center;gap:10px;
+    color:var(--gray300);font-size:11.5px;
+    margin-bottom:10px;text-decoration:none;
+    transition:color 0.2s;
+  }
+  .contact-item:hover{color:var(--teal);}
+  .contact-dot{width:4px;height:4px;border-radius:50%;background:var(--teal-dim);flex-shrink:0;}
+
+  /* MAIN */
+  .main{margin-left:var(--sidebar-w);flex:1;max-width:calc(100% - var(--sidebar-w));}
+
+  /* HERO */
+  .hero{
+    background:var(--bg2);
+    padding:64px 64px 56px;
+    position:relative;overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero-glow{
+    position:absolute;top:-100px;right:-100px;
+    width:400px;height:400px;border-radius:50%;
+    background:radial-gradient(circle,rgba(29,184,164,0.06) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero-glow2{
+    position:absolute;bottom:-80px;left:200px;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,168,75,0.04) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero-label{
+    font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+    color:var(--teal);font-weight:500;margin-bottom:16px;
+  }
+  .hero-name{
+    font-family:'Playfair Display',serif;
+    font-size:54px;font-weight:600;
+    color:var(--white);line-height:1.05;margin-bottom:8px;
+  }
+  .hero-name span{color:var(--white);}
+  .hero-subtitle{
+    font-size:14.5px;color:var(--gray300);
+    max-width:580px;line-height:1.75;
+    margin-bottom:32px;font-weight:300;
+  }
+  .countries-line{
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:28px;flex-wrap:wrap;
+  }
+  .countries-label{font-size:11px;color:var(--gray400);letter-spacing:0.05em;text-transform:uppercase;}
+  .country-tag{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--border2);
+    color:var(--gray100);
+    font-size:12px;padding:3px 12px;border-radius:20px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .flag{font-size:14px;}
+  .hero-targets{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+  .target-pill{
+    background:rgba(29,184,164,0.08);
+    border:1px solid rgba(29,184,164,0.2);
+    color:var(--teal);
+    padding:8px 20px;border-radius:40px;
+    font-size:13px;font-weight:400;
+  }
+  .hero-stats{
+    display:flex;gap:48px;
+    padding-top:36px;
+    border-top:1px solid var(--border);
+    flex-wrap:wrap;
+  }
+  .stat-val{
+    font-family:'Playfair Display',serif;
+    font-size:38px;font-weight:600;
+    color:var(--white);line-height:1;
+  }
+  .stat-val span{color:var(--gold);}
+  .stat-label{font-size:11.5px;color:var(--gray400);margin-top:5px;font-weight:300;}
+
+  /* SECTIONS */
+  .section{
+    padding:60px 64px;
+    border-bottom:1px solid var(--border);
+    background:var(--bg);
+  }
+  .section:nth-child(even){background:var(--bg2);}
+  .section-header{
+    display:flex;align-items:center;gap:16px;margin-bottom:40px;
+  }
+  .section-icon{
+    width:38px;height:38px;
+    background:var(--teal-glow);
+    border:1px solid rgba(29,184,164,0.2);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--teal);font-size:16px;flex-shrink:0;
+  }
+  .section-title{
+    font-family:'Josefin Sans',sans-serif;
+    font-size:22px;font-weight:600;
+    color:var(--white);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .section-line{flex:1;height:1px;background:var(--border);margin-left:8px;}
+
+  /* EXPERIENCE */
+  .exp-item{
+    display:grid;grid-template-columns:180px 1fr;
+    gap:32px;padding:28px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .exp-item:last-child{border-bottom:none;}
+  .exp-meta{padding-top:2px;}
+  .exp-dates{
+    font-size:11px;font-weight:500;
+    letter-spacing:0.06em;color:var(--teal);
+    text-transform:uppercase;margin-bottom:6px;
+  }
+  .exp-company{font-size:13px;color:var(--gray300);font-weight:400;line-height:1.4;}
+  .exp-location{font-size:11px;color:var(--gray400);margin-top:3px;}
+  .exp-title{
+    font-family:'Playfair Display',serif;
+    font-size:18px;font-weight:500;
+    color:var(--white);margin-bottom:10px;
+  }
+  .exp-desc{font-size:13.5px;color:var(--gray300);line-height:1.75;font-weight:300;}
+  .exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .exp-tag{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--border2);
+    color:var(--gray300);
+    font-size:11px;padding:3px 10px;border-radius:4px;
+  }
+  .award-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(212,168,75,0.1);
+    border:1px solid rgba(212,168,75,0.3);
+    color:var(--gold);
+    font-size:11px;padding:4px 12px;border-radius:20px;
+    margin-top:10px;font-weight:500;
+  }
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+  .skill-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;padding:24px;
+  }
+  .skill-card-title{
+    font-size:11px;font-weight:500;
+    letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:16px;
+  }
+  .skill-list{list-style:none;}
+  .skill-list li{
+    font-size:13px;color:var(--gray300);
+    padding:5px 0;border-bottom:1px solid var(--border);
+    display:flex;align-items:center;gap:10px;font-weight:300;
+  }
+  .skill-list li:last-child{border-bottom:none;}
+  .skill-dot{width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+
+  /* STRENGTHS */
+  .strengths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .strength-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;padding:22px;
+    transition:border-color 0.2s,background 0.2s;
+  }
+  .strength-card:hover{border-color:rgba(29,184,164,0.3);background:var(--surface2);}
+  .strength-icon{font-size:20px;margin-bottom:12px;}
+  .strength-title{font-size:14px;font-weight:500;color:var(--white);margin-bottom:6px;}
+  .strength-desc{font-size:12.5px;color:var(--gray300);line-height:1.65;font-weight:300;}
+
+  /* CERTS */
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+  .cert-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-left:2px solid var(--teal);
+    border-radius:0 8px 8px 0;
+    padding:16px 20px;
+  }
+  .cert-name{font-size:14px;font-weight:500;color:var(--white);margin-bottom:4px;}
+  .cert-issuer{font-size:12px;color:var(--gray400);font-weight:300;}
+
+  /* GALLERY */
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+  .gallery-item{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;overflow:hidden;
+    aspect-ratio:4/3;position:relative;
+    cursor:pointer;transition:border-color 0.2s,transform 0.2s;
+  }
+  .gallery-item:hover{border-color:rgba(29,184,164,0.3);transform:scale(1.02);}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;}
+  .gallery-placeholder{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;
+    color:var(--gray400);
+  }
+  .gallery-placeholder .ph-icon{font-size:26px;opacity:0.4;}
+  .gallery-placeholder span{font-size:11.5px;font-weight:300;opacity:0.6;text-align:center;padding:0 16px;line-height:1.5;}
+  .gallery-label{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(transparent,rgba(0,0,0,0.85));
+    color:white;padding:24px 12px 12px;
+    font-size:11.5px;font-weight:400;
+  }
+  .add-photo-btn{
+    background:rgba(29,184,164,0.04);
+    border:1px dashed rgba(29,184,164,0.25);
+    border-radius:10px;aspect-ratio:4/3;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;
+    cursor:pointer;color:var(--teal);
+    transition:background 0.2s,border-color 0.2s;
+    font-size:22px;
+  }
+  .add-photo-btn:hover{background:rgba(29,184,164,0.08);border-color:rgba(29,184,164,0.5);}
+  .add-photo-btn span{font-size:12px;font-weight:400;}
+
+  /* LANGUAGES */
+  .lang-grid{display:flex;gap:14px;flex-wrap:wrap;}
+  .lang-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;padding:20px 28px;min-width:170px;
+  }
+  .lang-name{font-size:15px;font-weight:500;color:var(--white);margin-bottom:3px;}
+  .lang-level{font-size:11px;color:var(--teal);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;}
+  .lang-bar{height:2px;background:var(--border2);border-radius:2px;margin-top:12px;overflow:hidden;}
+  .lang-fill{height:100%;background:var(--teal);border-radius:2px;}
+  .trilingual-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(29,184,164,0.08);
+    border:1px solid rgba(29,184,164,0.2);
+    color:var(--teal);
+    font-size:11px;font-weight:500;letter-spacing:0.08em;
+    text-transform:uppercase;padding:6px 16px;border-radius:20px;
+    margin-bottom:24px;
+  }
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .contact-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;padding:22px;
+    display:flex;align-items:center;gap:16px;
+  }
+  .contact-icon-wrap{
+    width:42px;height:42px;
+    background:var(--teal-glow);
+    border:1px solid rgba(29,184,184,0.15);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--teal);font-size:18px;flex-shrink:0;
+  }
+  .contact-label{font-size:10.5px;color:var(--gray400);margin-bottom:4px;font-weight:400;letter-spacing:0.04em;text-transform:uppercase;}
+  .contact-value{font-size:13.5px;color:var(--white);font-weight:400;}
+  .contact-value a{color:var(--teal);text-decoration:none;}
+  .contact-value a:hover{text-decoration:underline;}
+
+  /* DOWNLOAD BTN */
+  .download-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--teal);color:var(--bg);
+    padding:12px 28px;border-radius:8px;
+    font-size:13px;font-weight:500;
+    text-decoration:none;
+    transition:opacity 0.2s;
+    margin-top:32px;
+  }
+  .download-btn:hover{opacity:0.85;}
+
+  /* FOOTER */
+  .footer{
+    padding:28px 64px;text-align:center;
+    font-size:11.5px;
+    background:var(--bg2);
+    color:var(--gray400);
+    border-top:1px solid var(--border);
+  }
+  .footer strong{color:var(--gray300);}
+
+  .section-anchor{scroll-margin-top:20px;}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-top">
+    <div class="avatar"><img src="profile.jpg" alt="Gustavo Encalada"></div>
+    <div class="sidebar-name">Gustavo Encalada</div>
+    <div class="sidebar-titles">
+      <span class="title-badge">Operations Manager</span>
+      <span class="title-badge">Project Manager</span>
+      <span class="title-badge">Technical Office Manager</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Profile</div>
+    <a href="#about" class="nav-link active"><span class="nav-dot"></span> About</a>
+    <a href="#experience" class="nav-link"><span class="nav-dot"></span> Experience</a>
+    <div class="nav-section-label">Qualifications</div>
+    <a href="#skills" class="nav-link"><span class="nav-dot"></span> Skills</a>
+    <a href="#strengths" class="nav-link"><span class="nav-dot"></span> Strengths</a>
+    <a href="#certifications" class="nav-link"><span class="nav-dot"></span> Certifications</a>
+    <a href="#education" class="nav-link"><span class="nav-dot"></span> Education</a>
+    <div class="nav-section-label">Portfolio</div>
+    <a href="#projects" class="nav-link"><span class="nav-dot"></span> Projects &amp; Photos</a>
+    <div class="nav-section-label">Connect</div>
+    <a href="#contact" class="nav-link"><span class="nav-dot"></span> Contact</a>
+    <a href="#languages" class="nav-link"><span class="nav-dot"></span> Languages</a>
+  </nav>
+
+  <div class="sidebar-contact">
+    <a href="tel:9543328570" class="contact-item"><span class="contact-dot"></span> 954-332-8570</a>
+    <a href="mailto:kazencalada@gmail.com" class="contact-item"><span class="contact-dot"></span> kazencalada@gmail.com</a>
+    <div class="contact-item"><span class="contact-dot"></span> Orlando, FL 32832</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero section-anchor" id="about">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-label">Civil &amp; Architectural Designer &bull; PMP &bull; CPM &bull; AutoCAD 2D/3D &bull; Civil 3D Certified</div>
+    <h1 class="hero-name">Gustavo <span>Encalada</span></h1>
+    <p class="hero-subtitle">Senior construction and operations professional with 30+ years of international experience managing complex projects, leading multidisciplinary teams, and delivering results across civil infrastructure, industrial facilities, and technical operations in 5 countries.</p>
+
+    <div style="margin-bottom:28px;">
+      <span class="award-badge" style="font-size:13px;padding:8px 20px;">&#127942; Best Building Design Award 2009 &mdash; Argentum Building, Quito, Ecuador</span>
+    </div>
+
+    <div class="countries-line">
+      <span class="countries-label">International Experience</span>
+      <span class="country-tag"><span class="flag">🇺🇸</span> United States</span>
+      <span class="country-tag"><span class="flag">🇪🇨</span> Ecuador</span>
+      <span class="country-tag"><span class="flag">🇵🇪</span> Peru</span>
+      <span class="country-tag"><span class="flag">🇲🇽</span> Mexico</span>
+      <span class="country-tag"><span class="flag">🇧🇷</span> Brazil</span>
+    </div>
+
+    <div class="hero-targets">
+      <span class="target-pill">Operations Manager</span>
+      <span class="target-pill">Project Manager</span>
+      <span class="target-pill">Technical Office Manager</span>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">30<span>+</span></div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div>
+        <div class="stat-val">5</div>
+        <div class="stat-label">Countries — USA, Ecuador, Peru, Mexico &amp; Brazil</div>
+      </div>
+      <div>
+        <div class="stat-val">2</div>
+        <div class="stat-label">PMP &amp; CPM Certified</div>
+      </div>
+      <div>
+        <div class="stat-val">4</div>
+        <div class="stat-label">Languages — English, Spanish, Portuguese &amp; Italian</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section section-anchor" id="experience">
+    <div class="section-header">
+      <div class="section-icon">&#128188;</div>
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2023 &mdash; Present</div>
+        <div class="exp-company">Cebotech USA</div>
+        <div class="exp-location">Ormond Beach, Florida</div>
+      </div>
+      <div>
+        <div class="exp-title">Technical Operations &amp; Quality Control Specialist</div>
+        <div class="exp-desc">Oversee incoming QA/QC inspection, functional commissioning, and technical operations of industrial equipment. Coordinate with logistics, procurement, and vendor teams to ensure on-time delivery and full compliance with quality standards. Document non-conformances, corrective actions, and commissioning results in structured technical reports.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">QA/QC</span>
+          <span class="exp-tag">Commissioning</span>
+          <span class="exp-tag">Vendor Management</span>
+          <span class="exp-tag">Technical Operations</span>
+          <span class="exp-tag">Industrial Equipment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2022 &mdash; Present</div>
+        <div class="exp-company">iCare Health Solutions</div>
+        <div class="exp-location">Orlando, Florida</div>
+      </div>
+      <div>
+        <div class="exp-title">Multi-Site Operations Coordinator</div>
+        <div class="exp-desc">Coordinate and support operational continuity across 15+ clinical locations specializing in retinal diagnostics and ocular health services. Manage patient scheduling, vendor relationships, medical equipment logistics, and regulatory compliance programs across distributed clinical sites. Perform retinal imaging and diagnostic procedures including fundus photography, OCR, and visual field testing — ensuring clinical accuracy and patient care standards. Oversee capital equipment deployment and multi-vendor contract coordination within budget parameters, while implementing process improvements that reduce operational friction and enhance service delivery across the clinical network.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Retinal Diagnostics</span>
+          <span class="exp-tag">Multi-Site Operations</span>
+          <span class="exp-tag">Clinical Coordination</span>
+          <span class="exp-tag">Medical Equipment</span>
+          <span class="exp-tag">Ocular Health</span>
+          <span class="exp-tag">Process Improvement</span>
+          <span class="exp-tag">Regulatory Compliance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2020 &mdash; 2022</div>
+        <div class="exp-company">Palnet USA</div>
+        <div class="exp-location">Houston, Texas</div>
+      </div>
+      <div>
+        <div class="exp-title">Operations Supervisor</div>
+        <div class="exp-desc">Supervised daily operations of a high-volume pallet manufacturing and distribution business, overseeing production workflows, inventory management, and logistics coordination. Managed end-to-end delivery operations ensuring on-time fulfillment to final customers across the Houston market. Led field teams, coordinated with vendors and suppliers, and maintained quality control standards throughout the production and delivery chain.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Operations Supervision</span>
+          <span class="exp-tag">Logistics & Distribution</span>
+          <span class="exp-tag">Team Leadership</span>
+          <span class="exp-tag">Inventory Management</span>
+          <span class="exp-tag">Customer Delivery</span>
+          <span class="exp-tag">Production Control</span>
+        </div>
+      </div>
+    </div>
+        <div class="exp-location">Miami, Florida</div>
+      </div>
+      <div>
+        <div class="exp-title">Senior Civil Designer &amp; Project Lead</div>
+        <div class="exp-desc">Led civil and structural design for commercial, residential, and mixed-use developments across South Florida. Produced complete construction documentation sets — site plans, grading, drainage, structural drawings — ensuring NEC and local code compliance. Coordinated directly with architects, engineers, contractors, and permitting authorities from concept through construction administration.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Senior Civil Design</span>
+          <span class="exp-tag">Construction Documentation</span>
+          <span class="exp-tag">Permitting</span>
+          <span class="exp-tag">Client Management</span>
+          <span class="exp-tag">AutoCAD Civil 3D</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2014 &mdash; 2018</div>
+        <div class="exp-company">Quatergy Petroleum Services</div>
+        <div class="exp-location">Ecuador &bull; Peru &bull; Mexico</div>
+      </div>
+      <div>
+        <div class="exp-title">Senior Civil Designer &amp; Project Lead</div>
+        <div class="exp-desc">Directed AutoCAD Civil 3D design and field coordination for complex oilfield and mining facility programs across Ecuador, Peru, and Mexico. Produced site layout plans, grading, utility, and drainage designs for industrial facilities. Served as primary liaison between engineering teams, contractors, and regulatory authorities across three countries — maintaining a perfect safety record throughout all international field assignments.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">AutoCAD Civil 3D</span>
+          <span class="exp-tag">International Projects</span>
+          <span class="exp-tag">Oil &amp; Gas</span>
+          <span class="exp-tag">Mining Facilities</span>
+          <span class="exp-tag">Regulatory Compliance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2012 &mdash; 2014</div>
+        <div class="exp-company">Techint Engineering &amp; Construction</div>
+        <div class="exp-location">Ecuador</div>
+      </div>
+      <div>
+        <div class="exp-title">Civil Area Leader &mdash; Technical Office Manager &amp; Facilities Coordinator</div>
+        <div class="exp-desc">Led technical office operations and civil area design for large-scale pipeline infrastructure and industrial facility programs. Directed a 12-person multidisciplinary CAD and engineering team, managing drawing production, QA/QC programs, regulatory submittals, and multi-discipline construction coordination. Coordinated facility planning and execution across complex, concurrent project sites delivering ahead of schedule and within budget.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Technical Office Management</span>
+          <span class="exp-tag">Facilities Coordinator</span>
+          <span class="exp-tag">Team Leadership</span>
+          <span class="exp-tag">Pipeline Infrastructure</span>
+          <span class="exp-tag">QA/QC</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2009 &mdash; 2012</div>
+        <div class="exp-company">Santos CMI</div>
+        <div class="exp-location">Ecuador</div>
+      </div>
+      <div>
+        <div class="exp-title">Multiarea Designer &mdash; Electrical &amp; Civil</div>
+        <div class="exp-desc">Managed electrical and civil design across large-scale industrial facility projects, producing technical layouts, specifications, and construction documentation for complex multi-discipline programs. Led cross-functional coordination between design, fabrication, and field installation teams. Optimized design review processes and managed regulatory approvals across concurrent programs in both electrical and civil disciplines.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Electrical Design</span>
+          <span class="exp-tag">Civil Design</span>
+          <span class="exp-tag">Multi-Discipline</span>
+          <span class="exp-tag">Industrial Facilities</span>
+          <span class="exp-tag">Contractor Management</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2004 &mdash; 2009</div>
+        <div class="exp-company">Salamandra Creativa</div>
+        <div class="exp-location">Quito, Ecuador</div>
+      </div>
+      <div>
+        <div class="exp-title">Design Manager &amp; Chief Structural Designer</div>
+        <div class="exp-desc">Managed structural and civil design projects for commercial, industrial, and hospitality clients across Ecuador. Delivered technically precise and award-winning design solutions recognized for innovation and structural excellence. Led client presentations using 3D design visualization, generating long-term client relationships and referrals.</div>
+        <div class="award-badge">&#127942; Best Building Design Award 2009 &mdash; Argentum Building, Quito, Ecuador</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Design Management</span>
+          <span class="exp-tag">Structural Design</span>
+          <span class="exp-tag">3D Visualization</span>
+          <span class="exp-tag">Award-Winning Design</span>
+          <span class="exp-tag">Client Relations</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section-anchor" id="skills">
+    <div class="section-header">
+      <div class="section-icon">&#9881;</div>
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Project Management</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>End-to-end project planning &amp; control</li>
+          <li><span class="skill-dot"></span>Master schedule development</li>
+          <li><span class="skill-dot"></span>Budget management &amp; cost control</li>
+          <li><span class="skill-dot"></span>Contract administration</li>
+          <li><span class="skill-dot"></span>RFI &amp; submittal management</li>
+          <li><span class="skill-dot"></span>Risk management &amp; mitigation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Operations Management</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>Multi-site operations oversight</li>
+          <li><span class="skill-dot"></span>Vendor &amp; subcontractor management</li>
+          <li><span class="skill-dot"></span>Process improvement &amp; optimization</li>
+          <li><span class="skill-dot"></span>Staff supervision &amp; team leadership</li>
+          <li><span class="skill-dot"></span>Capital equipment procurement</li>
+          <li><span class="skill-dot"></span>Regulatory compliance management</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Technical Office</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>AutoCAD Civil 3D (Certified Professional)</li>
+          <li><span class="skill-dot"></span>AutoCAD 2D/3D</li>
+          <li><span class="skill-dot"></span>Blueprint &amp; technical drawing review</li>
+          <li><span class="skill-dot"></span>Construction documentation packages</li>
+          <li><span class="skill-dot"></span>QA/QC programs &amp; compliance</li>
+          <li><span class="skill-dot"></span>Bluebeam &bull; MS Project &bull; Primavera P6</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Leadership &amp; Communication</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>Multidisciplinary team leadership</li>
+          <li><span class="skill-dot"></span>Stakeholder &amp; client management</li>
+          <li><span class="skill-dot"></span>Multilingual — English, Spanish, Portuguese, Italian</li>
+          <li><span class="skill-dot"></span>Cross-functional coordination</li>
+          <li><span class="skill-dot"></span>Design-Build &amp; Design-Bid-Build</li>
+          <li><span class="skill-dot"></span>International project delivery</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section class="section section-anchor" id="strengths">
+    <div class="section-header">
+      <div class="section-icon">&#9733;</div>
+      <h2 class="section-title">Core Strengths</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="strengths-grid">
+      <div class="strength-card">
+        <div class="strength-icon">&#128200;</div>
+        <div class="strength-title">Results-Driven Leader</div>
+        <div class="strength-desc">Consistently delivers projects on time and within budget through disciplined planning, clear communication, and proactive problem solving across complex programs.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">&#127758;</div>
+        <div class="strength-title">5-Country International Experience</div>
+        <div class="strength-desc">Managed programs in Ecuador, Peru, Mexico, Brazil, and the USA — fully comfortable operating across diverse regulatory, cultural, and language environments.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">&#128295;</div>
+        <div class="strength-title">Technical + Managerial Rare Combo</div>
+        <div class="strength-desc">Uniquely bridges AutoCAD Civil 3D certified design expertise with senior-level project and operations management — a rare and highly valuable combination.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">&#128101;</div>
+        <div class="strength-title">Proven Team Builder</div>
+        <div class="strength-desc">Built and led multidisciplinary teams of 12+ engineers and designers, fostering accountability, cross-discipline collaboration, and high performance under pressure.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">&#128196;</div>
+        <div class="strength-title">Quality &amp; Process Focus</div>
+        <div class="strength-desc">Deep expertise in QA/QC programs, construction documentation, and regulatory compliance — delivering audit-ready and permit-ready work on every project.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">&#127760;</div>
+        <div class="strength-title">Multilingual Communicator</div>
+        <div class="strength-desc">Fluent in English, native Spanish, working Portuguese, and currently learning Italian — able to manage teams, negotiate contracts, and present across 4 languages and 5 countries.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section section-anchor" id="certifications">
+    <div class="section-header">
+      <div class="section-icon">&#127942;</div>
+      <h2 class="section-title">Certifications &amp; Licenses</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-name">Project Management Professional (PMP)</div>
+        <div class="cert-issuer">Project Management Institute (PMI)</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Construction Project Manager (CPM)</div>
+        <div class="cert-issuer">American Academy of Project Management (AAPM)</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">AutoCAD Civil 3D Certified Professional</div>
+        <div class="cert-issuer">Autodesk &mdash; 2013</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Construction Design Management (CDM)</div>
+        <div class="cert-issuer">2008</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">OSHA Safety Trained</div>
+        <div class="cert-issuer">Environment &amp; Safety Training &mdash; 1996</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Linux System Administrator</div>
+        <div class="cert-issuer">2006</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section section-anchor" id="education">
+    <div class="section-header">
+      <div class="section-icon">&#127979;</div>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">1996 &mdash; 2000</div>
+        <div class="exp-company">Universidad San Francisco de Quito</div>
+        <div class="exp-location">Quito, Ecuador</div>
+      </div>
+      <div>
+        <div class="exp-title">Bachelor of Arts &mdash; Architectural Studies &amp; Civil Design</div>
+        <div class="exp-desc">Comprehensive program in architectural studies and civil design, building a strong foundation in structural systems, spatial design, technical drawing, and construction methodologies that underpins a 30+ year career in civil design and project management.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Architectural Studies</span>
+          <span class="exp-tag">Civil Design</span>
+          <span class="exp-tag">Structural Systems</span>
+          <span class="exp-tag">Technical Drawing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-dates">2000 &mdash; 2002</div>
+        <div class="exp-company">Unisinus</div>
+        <div class="exp-location">Brazil</div>
+      </div>
+      <div>
+        <div class="exp-title">Associate of Science &mdash; Mechanical Design</div>
+        <div class="exp-desc">Specialized studies in mechanical design and engineering systems in Brazil, adding a critical technical dimension to civil design expertise and broadening multi-discipline engineering knowledge across mechanical and industrial applications.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Mechanical Design</span>
+          <span class="exp-tag">Engineering Systems</span>
+          <span class="exp-tag">Industrial Applications</span>
+          <span class="exp-tag">Brazil</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item" style="border-bottom:none;padding-bottom:0;">
+      <div class="exp-meta">
+        <div class="exp-dates">2002 &mdash; 2004</div>
+        <div class="exp-company">Instituto Metropolitano de Diseño</div>
+        <div class="exp-location">Quito, Ecuador</div>
+      </div>
+      <div>
+        <div class="exp-title">Associate of Arts &mdash; Industrial Design &amp; Project Management</div>
+        <div class="exp-desc">Focused program in industrial design and project management — directly bridging creative design thinking with structured project delivery methodology. This combination of technical design and management training forms the core of a career spanning civil engineering, operations management, and technical leadership across 5 countries.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Industrial Design</span>
+          <span class="exp-tag">Project Management</span>
+          <span class="exp-tag">Design Methodology</span>
+          <span class="exp-tag">Technical Leadership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS & PHOTOS -->
+  <section class="section section-anchor" id="projects">
+    <div class="section-header">
+      <div class="section-icon">&#128247;</div>
+      <h2 class="section-title">Projects &amp; Experience Gallery</h2>
+      <div class="section-line"></div>
+    </div>
+    <p style="font-size:13px;color:var(--gray400);margin-bottom:24px;font-weight:300;">A visual portfolio of project sites, technical work, field experience, and award-winning designs across 5 countries.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#127942;</span>
+          <span>Argentum Building<br>Best Design Award 2009<br>Quito, Ecuador</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Industrial Facility Design<br>Ecuador &bull; Peru</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Pipeline Infrastructure<br>Techint Projects</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Site Layout Plans<br>AutoCAD Civil 3D</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Oilfield Programs<br>Mexico &bull; Peru</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Commercial Construction<br>South Florida</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Mining Facility Design<br>International Projects</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">&#128247;</span>
+          <span>Technical Documentation<br>Construction Packages</span>
+        </div>
+      </div>
+      <div class="add-photo-btn">
+        <span>+</span>
+        <span>Add Photo</span>
+      </div>
+      <div class="add-photo-btn">
+        <span>+</span>
+        <span>Add Photo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="section section-anchor" id="languages">
+    <div class="section-header">
+      <div class="section-icon">&#127760;</div>
+      <h2 class="section-title">Languages</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="trilingual-badge">&#127760; Multilingual Professional — 4 Languages</div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="lang-name">English</div>
+        <div class="lang-level">Fluent</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:92%"></div></div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">Spanish</div>
+        <div class="lang-level">Native</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">Portuguese</div>
+        <div class="lang-level">Working Knowledge</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:45%"></div></div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-name">Italian</div>
+        <div class="lang-level">Currently Learning</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:18%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-anchor" id="contact">
+    <div class="section-header">
+      <div class="section-icon">&#9993;</div>
+      <h2 class="section-title">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon-wrap">&#9742;</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:9543328570">954-332-8570</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap">&#9993;</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:kazencalada@gmail.com">kazencalada@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap">&#128205;</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Orlando, FL 32832</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap">&#128279;</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value"><a href="https://www.linkedin.com/in/kazencalada" target="_blank">linkedin.com/in/kazencalada</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap">&#127760;</div>
+        <div>
+          <div class="contact-label">Work Authorization</div>
+          <div class="contact-value">U.S. Authorized (EAD) &mdash; No Sponsorship Required</div>
+        </div>
+      </div>
+    </div>
+    <a href="https://raw.githubusercontent.com/kazencalada/gustavoencalada/main/GE_Master_Resume.docx" download="Gustavo_Encalada_Resume.docx" class="download-btn">&#11015; Download Resume</a>
+  </section>
+
+  <footer class="footer">
+    <strong>Gustavo Encalada</strong> &bull; PMP &bull; Construction Project Manager (CPM) &bull; AutoCAD Civil 3D Certified &bull; B.S. Civil Engineering &bull; Orlando, FL &bull; 4 Languages &bull; 5 Countries
+  </footer>
+
+</main>
+
+<script>
+const links = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section-anchor');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  links.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+links.forEach(l => {
+  l.addEventListener('click', () => {
+    links.forEach(x => x.classList.remove('active'));
+    l.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
